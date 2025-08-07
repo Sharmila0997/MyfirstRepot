@@ -3,17 +3,170 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pizza Order Generator</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Pizza Generator with DevOps Lifecycle</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff3e0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      text-align: center;
+      background-color: #ffe0b2;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      margin: 30px auto;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    h1 {
+      color: #d84315;
+    }
+
+    #output {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #4e342e;
+      background: #fff8e1;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    button {
+      background-color: #ff7043;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #ff5722;
+    }
+
+    .devops-section {
+      background-color: #e0f7fa;
+      padding: 30px;
+      margin: 30px auto;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    .devops-section h2 {
+      color: #00796b;
+    }
+
+    .lifecycle {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .phase {
+      background-color: #ffffff;
+      border: 1px solid #b2dfdb;
+      border-radius: 8px;
+      padding: 15px;
+      flex: 1 1 250px;
+      margin: 10px;
+    }
+
+    .phase h3 {
+      color: #004d40;
+    }
+
+    .phase p {
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>🍕 Pizza Order Generator</h1>
-    <div id="orderDisplay" class="order-box">
-      Click the button to generate a pizza order!
+    <h1>🍕 Pizza Generator</h1>
+    <div id="output">
+      Click the button to generate your pizza order!
     </div>
-    <button onclick="generatePizza()">Generate Order</button>
+    <button onclick="generatePizza()">Generate Pizza</button>
   </div>
-  <script src="script.js"></script>
+
+  <div class="devops-section">
+    <h2>🚀 DevOps Lifecycle for Pizza Generator</h2>
+    <div class="lifecycle">
+      <div class="phase">
+        <h3>1. Plan</h3>
+        <p>Define the goal: A simple pizza generator using HTML, CSS, and JS. Decide layout and features (like toppings, size, crust).</p>
+      </div>
+      <div class="phase">
+        <h3>2. Develop</h3>
+        <p>Write the code. Use a code editor (like VS Code). Save the file as <code>index.html</code>. Use Git for version control.</p>
+      </div>
+      <div class="phase">
+        <h3>3. Build</h3>
+        <p>(Optional for static apps) Use tools like Parcel/Webpack if you're bundling resources. For basic HTML, this is a manual step.</p>
+      </div>
+      <div class="phase">
+        <h3>4. Test</h3>
+        <p>Manually test functionality. Check button clicks, random generation, and responsiveness on different devices.</p>
+      </div>
+      <div class="phase">
+        <h3>5. Release</h3>
+        <p>Push code to GitHub. Use GitHub Actions, Netlify, or Vercel for deployment. Automate if possible.</p>
+      </div>
+      <div class="phase">
+        <h3>6. Deploy</h3>
+        <p>Deploy the app to a live environment. For static apps, GitHub Pages or Netlify works great.</p>
+      </div>
+      <div class="phase">
+        <h3>7. Operate</h3>
+        <p>Ensure the app stays available. Update when needed. Keep repo clean and updated.</p>
+      </div>
+      <div class="phase">
+        <h3>8. Monitor</h3>
+        <p>Use tools like Google Analytics, LogRocket, or uptime monitors to track usage, detect bugs or issues in live environment.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const sizes = ["Small", "Medium", "Large", "Extra Large"];
+    const crusts = ["Thin Crust", "Cheese Burst", "Stuffed Crust", "Pan Crust", "Whole Wheat"];
+    const sauces = ["Tomato Basil", "BBQ", "Pesto", "Garlic White", "Spicy Red"];
+    const toppings = ["Pepperoni", "Mushrooms", "Olives", "Onions", "Bell Peppers", "Jalapenos", "Pineapple", "Bacon"];
+
+    function getRandomItem(array) {
+      return array[Math.floor(Math.random() * array.length)];
+    }
+
+    function generatePizza() {
+      const size = getRandomItem(sizes);
+      const crust = getRandomItem(crusts);
+      const sauce = getRandomItem(sauces);
+      const shuffledToppings = toppings.sort(() => 0.5 - Math.random());
+      const selectedToppings = shuffledToppings.slice(0, 3);
+
+      const result = `
+        <h2>🍕 Your Pizza Order:</h2>
+        <ul style="text-align: left; display: inline-block;">
+          <li><strong>Size:</strong> ${size}</li>
+          <li><strong>Crust:</strong> ${crust}</li>
+          <li><strong>Sauce:</strong> ${sauce}</li>
+          <li><strong>Toppings:</strong> ${selectedToppings.join(", ")}</li>
+        </ul>
+      `;
+
+      document.getElementById("output").innerHTML = result;
+    }
+  </script>
 </body>
 </html>
