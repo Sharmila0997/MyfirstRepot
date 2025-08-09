@@ -1,0 +1,7 @@
+Name: Sharmila
+Course: BSC computer Science
+One key thing I’ve learned about GitHub is that it's more than just a place to store code — it’s a powerful collaboration platform. It allows multiple developers to work together on the same project through version control (using Git), issues, pull requests, and branching. This makes it easier to track changes, manage contributions, and ensure code quality, especially in large or open-source projects.
+
+
+
+
